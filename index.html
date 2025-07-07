@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5646ad2-d211-474d-99d3-ec7280e8661a.png">
+    <title>CodeForAi - C++ Bootcamp for Future AI Developers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a45e97c15a.js" crossorigin="anonymous"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#16a34a',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-white font-sans text-dark antialiased">
+    <!-- Header/Navbar -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4 min-w-0">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5646ad2-d211-474d-99d3-ec7280e8661a.png" alt="CodeForAi logo in white with glowing circuit lines" class="h-10 w-10 shrink-0">
+                    <h1 class="text-2xl font-bold font-heading whitespace-nowrap truncate">CodeFor<span class="text-primary">Ai</span></h1>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#program" class="font-medium hover:text-primary transition">Program</a>
+                    <a href="#curriculum" class="font-medium hover:text-primary transition">Curriculum</a>
+                    <a href="#projects" class="font-medium hover:text-primary transition">Projects</a>
+                    <a href="#instructor" class="font-medium hover:text-primary transition">Instructor</a>
+                    <a href="#pricing" class="font-medium hover:text-primary transition">Pricing</a>
+                    <a href="#faq" class="font-medium hover:text-primary transition">FAQ</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="/path/to/your/course-plan.pdf" download="CodeForAi-Course-Plan.pdf" class="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-secondary hover:bg-green-700 transition">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Course Plan
+                    </a>
+                    <a href="#register" class="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition">Enroll Now</a>
+                    <button class="md:hidden focus:outline-none" id="mobile-menu-button">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="relative">
+            <!-- Mobile menu overlay -->
+            <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-black bg-opacity-30 z-40 hidden"></div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden bg-white w-full absolute left-0 shadow-lg z-50" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#program" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition">Program</a>
+                    <a href="#curriculum" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition">Curriculum</a>
+                    <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition">Projects</a>
+                    <a href="#instructor" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition">Instructor</a>
+                    <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition">Pricing</a>
+                    <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 transition">FAQ</a>
+                    <a href="/path/to/your/course-plan.pdf" download="CodeForAi-Course-Plan.pdf" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-secondary hover:bg-green-700 transition flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        Course Plan
+                    </a>
+                    <a href="#register" class="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-blue-700 transition">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold font-heading mb-6 leading-tight">The First Step Into the <span class="gradient-text">AI Future</span></h1>
+                    <p class="text-lg text-gray-600 mb-8">Master C++ fundamentals and discover how coding builds the foundation for modern technology. Designed specifically for school students (Classes 8–12).</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#register" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition">Enroll Now</a>
+                        <a href="#register" class="inline-flex items-center justify-center px-6 py-3 border border-primary text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition">Book Free Demo</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3cdc6b7b-2233-404e-8e10-d4955627ba9d.png" alt="Diverse group of students working together on laptops with holographic AI visualization in the classroom" class="rounded-xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/10">
+                    <h3 class="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">30+</h3>
+                    <p class="text-gray-600 mt-2">Hours of Hands-on Learning</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/10">
+                    <h3 class="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">100%</h3>
+                    <p class="text-gray-600 mt-2">Practical Projects</p>
+                </div>
+                <div class="p-6 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/10">
+                    <h3 class="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">20+</h3>
+                    <p class="text-gray-600 mt-2">Quiz & Assignment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Overview -->
+    <section id="program" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold font-heading mb-4">Program Overview</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">A 45-day journey from beginner to mastering the fundamentals of C++</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Foundation Building</h3>
+                    <p class="text-gray-600">Master C++ fundamentals - syntax, data structures, algorithms - the building blocks of AI programming.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Real-World Applications</h3>
+                    <p class="text-gray-600">Understand how C++ is used in real-world applications, from software tools to smart devices.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gradient-to-r from-primary to-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Future-Ready Skills</h3>
+                    <p class="text-gray-600">Develop computational thinking and problem-solving abilities essential for future careers in technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold font-heading mb-4">What We Teach In 18 Sessions</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mb-6">Comprehensive curriculum</p>
+                <a href="/path/to/your/course-plan.pdf" download="CodeForAi-Course-Plan.pdf" class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-secondary hover:bg-green-700 transition">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    Download Full Course Plan (PDF)
+                </a>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Week 1-6 -->
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4 text-primary">Foundations Concepts (Sessions 1-6)</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>AI, C++ Syntax & Programming Basics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Variables and Data Types</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Operators and Control Structures</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Loops and Patterns</span>
+                            </li>
+    
+                        </ul>
+                    </div>
+                    
+                    <!-- Week 7-12 -->
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4 text-primary">Intermediate Concepts (Sessions 7-12)</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Switch Statements & Flow Control</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Functions and Modular Code</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt=0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Building Mini Projects</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt=0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Matrix</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+
+                    <!-- Week 13-18 -->
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-bold mb-4 text-primary">Final (Sessions 13-18)</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>More about data structures</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Debugging & Error Handling</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt=0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Recap of All Concepts</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-secondary mr-2 mt=0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>Certificate and Career Guidance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Schedule & Pricing -->
+    <section id="pricing" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold font-heading mb-4">Course Schedule & Pricing</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">An intensive yet student-friendly program with flexible timings</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-gray-50 rounded-xl overflow-hidden shadow-sm border border-gray-200">
+                <div class="grid md:grid-cols-3">
+                    <div class="md:col-span-2 p-8 md:p-10">
+                        <h3 class="text-2xl font-bold mb-4">Program Duration</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span><span class="font-medium">45 days</span> of intensive learning (Tue, Thru, Sat)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span><span class="font-medium">1.5 hours daily</span> (4-5.30 PM or 6-7.30 PM batches)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span><span class="font-medium">Projects</span> - Build real applications</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-primary p-8 md:p-10 text-white">
+                        <h3 class="text-2xl font-bold mb-4">Investment</h3>
+                        <div class="mb-4">
+                            <span class="text-4xl font-bold">₹1,499</span>
+                            <span class="text-gray-200">for 45 days</span>
+                        </div>
+                        <p class="mb-6 text-primary-200">Everything included. No hidden charges.</p>
+                        <a href="#register" class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold font-heading mb-4">Real-World Projects</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Hands-on projects that reinforce learning and build your portfolio</p>
+            </div>
+            <div class="max-w-xl mx-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="bg-white shadow-sm border border-gray-100 hover:shadow-md transition project-card max-w-xs mx-auto">
+                        <img src="image/calcu.jpg" alt="Calculator" class="project-image">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Calculator</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-sm border border-gray-100 hover:shadow-md transition project-card max-w-xs mx-auto">
+                        <img src="image/currency.jpg" alt="Currency Converter" class="project-image">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Currency Converter</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-sm border border-gray-100 hover:shadow-md transition project-card max-w-xs mx-auto">
+                        <img src="image/number.png" alt="Number Guessing Game" class="project-image">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Number Guess Game</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow-sm border border-gray-100 hover:shadow-md transition project-card max-w-xs mx-auto">
+                        <img src="image/and-many-more.jpg" alt="And many more" class="project-image">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">And many more...</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <!-- <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold font-heading mb-4">What Students Say</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Our students have built successful projects and enhanced their computational thinking</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8ce46585-aa08-429c-bb08-25b3fdd8e496.png" alt="Portrait of high school student Priya Sharma working on laptop" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium">Priya Sharma</h4>
+                            <p class="text-gray-600">Class 10, Delhi Public School</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"The projects helped me understand how AI actually works behind the scenes. I built my first pathfinding algorithm!"</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/96a379d5-6172-442f-bb8e-31b080fe16e8.png" alt="Portrait of class 12 student Arjun Singh coding on desktop computer" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium">Arjun Singh</h4>
+                            <p class="text-gray-600">Class 12, St. Xavier's</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"I never thought C++ could be this fun. The way they connected it to AI applications was eye-opening."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bcc65c13-e51a-495b-aad5-67a5f0b9b268.png" alt="Portrait of class 9 student Ria Mehta debugging code with mentor" class="h-12 w-12 rounded-full">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium">Ria Mehta</h4>
+                            <p class="text-gray-600">Class 9, Modern School</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Best coding class I've taken! Clear explanations and practical examples made complex concepts easy to grasp."</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Instructor Bio -->
+    <section id="instructor" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <img src="image/shivam.jpg" alt="shivam sharma" class="rounded-xl shadow-lg">
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <h2 class="text-3xl font-bold font-heading mb-4">Meet Your Instructor</h2>
+                    <h3 class="text-xl font-medium text-primary mb-2">Shivam Sharma</h3>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">Computer Science</span>
+                        <span class="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">6+ Years Coding Experience</span>
+                    </div>
+                    <p class="text-gray+600 mb-6">
+
+I’m a Computer Science graduate and an experienced C++ developer with a passion for helping young minds discover the joy of programming.
+
+Over the past few years, I’ve worked on various coding projects and studied how strong fundamentals in languages like C++ build confidence and problem-solving skills that last a lifetime.</p>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                        <h4 class="font-bold mb-2">Teaching Approach</h4>
+                        <p class="text-gray-600 mb-4">"My goal is to help students see the 'why' behind programming concepts. When you understand how C++ powers Real-World applications, learning becomes exciting rather than intimidating."</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold font-heading mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Find answers to common questions about the program</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="border-b border-gray-200 mb-6">
+    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">
+        Who is this program for?
+    </button>
+    <div class="accordion-content hidden pb-6 text-gray-600">
+        <p>This bootcamp is specifically designed for school students in classes 8 through 12 who want to get started with programming and also learn strong coding fundamentals. No prior coding experience is required. It’s perfect for both students who are curious about coding as a hobby and those who want to build serious skills for the future.</p>
+    </div>
+</div>
+
+
+                <div class="border-b border-gray-200 mb-6">
+    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">
+        Do students need any prior coding experience to join this course?
+    </button>
+    <div class="accordion-content hidden pb-6 text-gray-600">
+        <p>No! This course is designed for complete beginners. We start from the basics and gradually build up to more advanced concepts.</p>
+    </div>
+</div>
+          
+<div class="border-b border-gray-200 mb-6">
+    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">
+        What support is available if a student has questions between classes?
+    </button>
+    <div class="accordion-content hidden pb-6 text-gray-600">
+        <p>After every class, we have a dedicated doubt-clearing session where students can ask questions live. We also offer WhatsApp and email support throughout the course to help with any doubts or assignments at any time.</p>
+    </div>
+</div>
+
+                <div class="border-b border-gray-200 mb-6">
+                    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">Why learn C++?</button>
+                    <div class="accordion-content hidden pb-6 text-gray-600">
+                        <p>C++ helps build a strong foundation in programming logic and problem-solving skills. It is widely used in software development, games, and performance-critical applications.</p>
+                    </div>
+                </div>
+
+                <div class="border-b border-gray-200 mb-6">
+    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">
+        How can parents track their child’s progress?
+    </button>
+    <div class="accordion-content hidden pb-6 text-gray-600">
+        <p>We provide regular updates, assignments, and progress reports. Parents can also contact us anytime for individual feedback.</p>
+    </div>
+</div>
+
+<div class="border-b border-gray-200 mb-6">
+    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">
+        Can students build real projects during the course?
+    </button>
+    <div class="accordion-content hidden pb-6 text-gray-600">
+        <p>Yes! Students will create several mini-projects, including a calculator, a number guessing game, a currency converter, and more.</p>
+    </div>
+</div>
+                
+                <div class="border-b border-gray-200 mb-6">
+                    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">What if I miss a session?</button>
+                    <div class="accordion-content hidden pb-6 text-gray-600">
+                        <p>All sessions are recorded and available for review. You'll also have access to our student portal with lesson materials, practice exercises, and code samples.</p>
+                    </div>
+                </div>
+                
+                <div class="border-b border-gray-200 mb-6">
+                    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">What computer spec do I need?</button>
+                    <div class="accordion-content hidden pb-6 text-gray-600">
+                        <p>Any modern computer (Windows, macOS, or Linux) with at least 4GB RAM will work. We provide cloud-based coding environments so you don't need to install heavy software.</p>
+                    </div>
+                </div>
+
+                <div class="border-b border-gray-200 mb-6">
+    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">
+        Will students get a certificate after completing the course?
+    </button>
+    <div class="accordion-content hidden pb-6 text-gray-600">
+        <p>Yes. All students who complete the 45-day bootcamp will receive a Certificate of Completion.</p>
+    </div>
+</div>
+                
+                <!-- <div class="border-b border-gray-200 mb-6">
+                    <button class="accordion-btn py-4 w-full text-left font-medium text-lg focus:outline-none" onclick="toggleAccordion(this)">When does the next batch start?</button>
+                    <div class="accordion-content hidden pb-6 text-gray-600">
+                        <p>New batches start every Monday. Choose morning (10AM-12PM) or evening (4-6PM) slots based on your school schedule.</p>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="register" class="py-16 bg-gradient-to-r from-primary to-secondary">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 md:p-10">
+                        <h2 class="text-3xl font-bold font-heading mb-4">Join the Batch <span class="text-primary" >Now!!</span></h2>
+                        <p class="text-gray-600 mb-6">Limited seats available. Reserve your spot today!</p>
+                        
+                        <form id="registrationForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Student's Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone (WhatsApp)</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                            </div>
+                            
+                            <div>
+                                <label for="class" class="block text-sm font-medium text-gray-700 mb-1">Class</label>
+                                <select id="class" name="class" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                                    <option value="">Select your class</option>
+                                    <option value="8">Class 8</option>
+                                    <option value="9">Class 9</option>
+                                    <option value="10">Class 10</option>
+                                    <option value="11">Class 11</option>
+                                    <option value="12">Class 12</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="batch" class="block text-sm font-medium text-gray-700 mb-1">Preferred Batch</label>
+                                <select id="batch" name="batch" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary">
+                                    <option value="">Select batch timing</option>
+            
+                                    <option value="evening400">Evening-1 (4-6.30PM)</option>
+                                    <option value="evening630">Evening-2 (6-8.30PM)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="pt-2">
+                                <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition">
+                                    Enroll Now - ₹1,499
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="hidden md:block md:w-1/2 bg-cover bg-center" style="background-image: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f512d329-f69b-43fa-8c54-09bb9e8a09ad.png');" alt="Happy students collaborating on coding project in modern classroom with monitors displaying lines of code">
+                        <div class="h-full bg-gradient-to-t from-primary/90 to-secondary/90 flex items-end p-8">
+                            <div class="text-white">
+                                <h3 class="text-2xl font-bold mb-2">Not Sure Yet?</h3>
+                                <p class="mb-6">Book a free 30-minute demo session with our instructor.</p>
+                                <a href="https://wa.me/919650702766" class="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 transition">
+                                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp for Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="https://wa.me/919650702766" class="w-14 h-14 bg-green-500 rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition">
+            <!-- <i class="fab fa-whatsapp text-2xl text-white"></i> -->
+            <img src="image/whatsapp.png" alt="WhatsApp" class="absolute inset-0 w-full h-full rounded-full opacity-75">
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5646ad2-d211-474d-99d3-ec7280e8661a.png" alt="CodeForAi logo in white with glowing circuit lines" class="h-10 w-10">
+                        <h3 class="text-2xl font-bold font-heading">CodeFor<span class="text-primary">Ai</span></h3>
+                    </div>
+                    <p class="text-gray-400">Empowering students with future-ready programming skills.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#program" class="text-gray-400 hover:text-white transition">Program Details</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition">Pricing</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-gray-400"><a href="mailto:learntonext@outlook.com">learntonext@outlook.com</a></span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="h-5 w-5 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <a href="tel:++91 9650702766">+91 9650702766</a>
+                        </li>
+                        <!-- <li class="flex items-start">
+                            <svg class="h-5 w-5 text-primary mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span class="text-gray-400">AI Tech Park, Bangalore</span>
+                        </li> -->
+                    </ul>
+                </div>
+
+                <!-- follow us section -->
+                
+                <!-- <div>
+                    <h4 class="text-lg font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div> -->
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>© 2025 LearnToNext. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

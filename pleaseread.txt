@@ -1,0 +1,4 @@
+1. phone number and whatsapp is not updated(also add phone link[like mail])
+2. data can be change to 19 Apr 
+3. pdf is not inserted till date(detail planner)
+4. remove not sure yet part in contact form
