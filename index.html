@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M2GNKRKY38"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M2GNKRKY38');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5646ad2-d211-474d-99d3-ec7280e8661a.png">
@@ -606,10 +615,8 @@ Over the past few years, I’ve worked on various coding projects and studied ho
                             </div>
                             
                             <div class="pt-2">
-                                <a href="https://rzp.io/rzp/codeforai" target="_blank" rel="noopener noreferrer">
-                                    <button id="investBtn" type="button" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition" disabled>
+                                <a id="investBtn" href="https://rzp.io/rzp/codeforai" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition opacity-50 cursor-not-allowed" tabindex="-1" aria-disabled="true">
                                     Invest Now – ₹1,499
-                                    </button>
                                 </a>
                             </div>
 
