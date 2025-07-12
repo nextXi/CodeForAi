@@ -53,9 +53,9 @@
                 <nav class="hidden md:flex space-x-8">
                     <a href="#program" class="font-medium hover:text-primary transition">Program</a>
                     <a href="#curriculum" class="font-medium hover:text-primary transition">Curriculum</a>
+                    <a href="#pricing" class="font-medium hover:text-primary transition">Pricing</a>
                     <a href="#projects" class="font-medium hover:text-primary transition">Projects</a>
                     <a href="#instructor" class="font-medium hover:text-primary transition">Instructor</a>
-                    <a href="#pricing" class="font-medium hover:text-primary transition">Pricing</a>
                     <a href="#faq" class="font-medium hover:text-primary transition">FAQ</a>
                 </nav>
                 <div class="flex items-center space-x-4">
@@ -615,7 +615,8 @@ Over the past few years, I’ve worked on various coding projects and studied ho
                             </div>
                             
                             <div class="pt-2">
-                                <a id="investBtn" href="https://rzp.io/rzp/codeforai" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition opacity-50 cursor-not-allowed" tabindex="-1" aria-disabled="true">
+                                <a id="investBtn" href="https://rzp.io/rzp/codeforai" target="_blank" rel="noopener noreferrer"
+                                   class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 transition">
                                     Invest Now – ₹1,499
                                 </a>
                             </div>
@@ -717,7 +718,11 @@ Over the past few years, I’ve worked on various coding projects and studied ho
                     </div>
                 </div> -->
             </div>
-            
+            <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+                <a href="privacy.html" target="_blank" class="hover:text-white underline transition">Privacy Policy</a>
+                <a href="refund.html" target="_blank" class="hover:text-white underline transition">Refund Policy</a>
+                <a href="term.html" target="_blank" class="hover:text-white underline transition">Terms & Conditions</a>
+            </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
                 <p>© 2025 LearnToNext. All rights reserved.</p>
             </div>
@@ -725,5 +730,26 @@ Over the past few years, I’ve worked on various coding projects and studied ho
     </footer>
 
     
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('registrationForm');
+        const investBtn = document.getElementById('investBtn');
+        const requiredFields = ['name', 'school', 'email', 'phone', 'class', 'batch'];
+
+        function isFormFilled() {
+            return requiredFields.every(id => {
+                const el = form.querySelector(`[name="${id}"]`);
+                return el && el.value.trim();
+            });
+        }
+
+        investBtn.addEventListener('click', function(e) {
+            if (!isFormFilled()) {
+                e.preventDefault();
+                alert('Please first fill the form');
+            }
+        });
+    });
+    </script>
 </body>
 </html>
